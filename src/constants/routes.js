@@ -1,9 +1,11 @@
-const ROUTES = {
+export const ROUTES = {
     HOME:'/',
     ABOUT:'/about',
     SIGNIN:'/login',
     SIGNOUT:'/logout',
     SIGNUP:'/register',
+    CHANGE_PASSWORD:'/password_change',
+    RESET_PASSWORD:'/password_reset',
 
     PLOT:'/plots',
     PLOT_INFO:'/plots/plot_id/',
