@@ -2,6 +2,7 @@ const ROUTES = {
     HOME:'/',
     ABOUT:'/about',
     BLOG:'/blog',
+
     SIGNIN:'/login',
     SIGNOUT:'/logout',
     SIGNUP:'/register',
@@ -41,6 +42,7 @@ export const protectedLinks = [
     {title:'tenants', path:ROUTES.TENANTS},
     {title:'rent', path:ROUTES.RENT_PAYMENT},
     {title:'about', path:ROUTES.ABOUT},
+    {title:'blog', path:ROUTES.BLOG},
 ];
 
 // public routes
