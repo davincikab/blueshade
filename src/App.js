@@ -1,19 +1,17 @@
 import React from 'react';
 
 // 3rd party components
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Switch} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import { List, ListItem, ListItemText, Container} from "@material-ui/core";
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import { Container, Hidden} from "@material-ui/core";
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Link from '@material-ui/core/Link';
 
 // local component
 import Navigation from './components/Navigation';
+import SideDrawer from './components/SideDrawer.js';
 
 
 // 
@@ -45,10 +43,15 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
 
-  const preventDefault = (event) => {
-    event.preventDefault();
-  }
+  const handleDrawerClose = () => {
+      setOpen(false);
+  };
+
+  const handleDrawerOpen = () => {
+      setOpen(true);
+  };
 
   return (
     <Router>
@@ -58,11 +61,24 @@ function App() {
         <AppBar position="static">
           <Toolbar>
             <Container maxWidth="md" className={classes.navbarDisplayFlex}>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+              <IconButton 
+                edge="start" 
+                className={classes.menuButton} 
+                color="inherit" 
+                aria-label="menu"
+                onClick={handleDrawerOpen}
+              >
                 <MenuIcon />
               </IconButton>
 
-              <Navigation />
+              <Hidden smDown>
+                  <Navigation isDrawer={false} />
+              </Hidden>
+
+              <Hidden mdUp>
+                  <SideDrawer open={open} handleDrawerClose={handleDrawerClose} />
+              </Hidden>
+              
             </Container>
           </Toolbar>
         </AppBar>

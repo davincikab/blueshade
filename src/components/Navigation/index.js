@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 // 
-import ROUTES from '../../constants/routes';
+import ROUTES, { protectedLinks, publicLinks} from '../../constants/routes';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,6 +28,14 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: `none`,
       textTransform: `titlecase`,
       color: `white`
+    },
+    linkTextMobile:{
+        textDecoration: `none`,
+        textTransform: `uppercase`,
+        color:'black'
+    },
+    navDisplayBlock: {
+        display:`block`
     }
   
 }));
@@ -36,55 +44,23 @@ export default function Navigation (props) {
     const authUser = {name:null}
     return (
         <>
-        {authUser.name ? <AuthRoutes /> : <NonAuthRoute /> }
-            
+            { authUser.name ? <AuthRoutes isDrawer={props.isDrawer}/> : <NonAuthRoute isDrawer={props.isDrawer}/> } 
         </>
     )
 }
 
 function AuthRoutes(props) {
     const classes = useStyles();
+    const { isDrawer } = props;
+
     return (
         <List 
             component="nav"
             aria-labelledby="main navigation"
-            className={classes.navDisplayFlex}
+            className={isDrawer ? classes.navDisplayBlock :classes.navDisplayFlex}
         >
-            <Link to={ROUTES.HOME} className={classes.linkText} >
-                  <ListItem button>
-                    <ListItemText primary="Home" />
-                  </ListItem>
-            </Link>
-
-            <Link to={ROUTES.PLOT} className={classes.linkText} >
-                  <ListItem button>
-                    <ListItemText primary="Plots" />
-                  </ListItem>
-            </Link>
-
-            <Link to={ROUTES.PROPERTY} className={classes.linkText} >
-                  <ListItem button>
-                    <ListItemText primary="Property" />
-                  </ListItem>
-            </Link>
-            <Link to={ROUTES.TENANTS} className={classes.linkText} >
-                  <ListItem button>
-                    <ListItemText primary="Tenants" />
-                  </ListItem>
-            </Link>
-
-            <Link to={ROUTES.RENT_PAYMENT} className={classes.linkText} >
-                  <ListItem button>
-                    <ListItemText primary="Rent" />
-                  </ListItem>
-            </Link>
-
-            <Link to={ROUTES.ABOUT} className={classes.linkText} >
-                  <ListItem button>
-                    <ListItemText primary="About" />
-                  </ListItem>
-            </Link>
-
+            <Navigation list={protectedLinks} isDrawer={isDrawer} />
+            
             <Button color="inherit">Logout</Button>
         </List>
     )
@@ -92,40 +68,46 @@ function AuthRoutes(props) {
 
 function NonAuthRoute(props) {
     const classes = useStyles();
+    const { isDrawer } = props;
 
     return (
         <List 
             component="nav"
             aria-labelledby="main navigation"
-            className={classes.navDisplayFlex}
+            className={isDrawer ? classes.navDisplayBlock :classes.navDisplayFlex}
         >
-            <Link to={ROUTES.HOME} className={classes.linkText} >
-                  <ListItem button>
-                    <ListItemText primary="Home" />
-                  </ListItem>
-            </Link>
-
-            <Link to={ROUTES.PLOT} className={classes.linkText} >
-                  <ListItem button>
-                    <ListItemText primary="Plots" />
-                  </ListItem>
-            </Link>
-
-            <Link to={ROUTES.PROPERTY} className={classes.linkText} >
-                  <ListItem button>
-                    <ListItemText primary="Property" />
-                  </ListItem>
-            </Link>
-            <Link to={ROUTES.ABOUT} className={classes.linkText} >
-                  <ListItem button>
-                    <ListItemText primary="About" />
-                  </ListItem>
-            </Link>
-            <Link to={ROUTES.SIGNIN} className={classes.linkText} >
-                  <ListItem button>
-                    <ListItemText primary="Login" />
-                  </ListItem>
-            </Link>
+            <NavList list={publicLinks} isDrawer={isDrawer} />
         </List>
     )
+}
+
+// navigation list
+function NavList({ list, isDrawer }) {
+    const classes = useStyles();
+
+    if(isDrawer) {
+        return (
+            <>
+                {list.map(({title, path}) => (
+                    <Link to={path} className={classes.linkTextMobile} key={title}>
+                        <ListItem button>
+                            <ListItemText primary={title} />
+                        </ListItem>
+                    </Link>
+                ))}
+            </>
+        )
+    } else {
+        return (
+            <>
+                {list.map(({title, path}) => (
+                    <Link to={path} className={classes.linkText} key={title}>
+                    <ListItem button>
+                        <ListItemText primary={title} />
+                    </ListItem>
+                    </Link>
+                ))}
+            </>
+        )
+    }
 }

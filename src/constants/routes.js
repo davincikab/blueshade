@@ -33,4 +33,24 @@ const ROUTES = {
     RENT_PAYMENT_DELETE:'rent/delete/rent_id',
 };
 
+// protected routes
+export const protectedLinks = [
+    {title:'home', path:ROUTES.HOME},
+    {title:'Plots', path:ROUTES.PLOT},
+    {title:'property', path:ROUTES.PROPERTY},
+    {title:'tenants', path:ROUTES.TENANTS},
+    {title:'rent', path:ROUTES.RENT_PAYMENT},
+    {title:'about', path:ROUTES.ABOUT},
+];
+
+// public routes
+export const publicLinks = [
+    {title:'home', path:ROUTES.HOME},
+    {title:'Plots', path:ROUTES.PLOT},
+    {title:'property', path:ROUTES.PROPERTY},
+    {title:'about', path:ROUTES.ABOUT},
+    {title:'login', path:ROUTES.SIGNIN},
+];
+
 export default ROUTES;
+
