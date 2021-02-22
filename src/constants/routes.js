@@ -1,4 +1,4 @@
-export const ROUTES = {
+const ROUTES = {
     HOME:'/',
     ABOUT:'/about',
     BLOG:'/blog',
@@ -31,4 +31,6 @@ export const ROUTES = {
     RENT_PAYMENT_CREATE:'rent/create/',
     RENT_PAYMENT_UPDATE:'rent/update/rent_id',
     RENT_PAYMENT_DELETE:'rent/delete/rent_id',
-}
+};
+
+export default ROUTES;
