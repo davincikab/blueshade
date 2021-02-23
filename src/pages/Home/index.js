@@ -1,12 +1,14 @@
 import React from 'react';
 import './Home.css';
 
-import { Container, Button, Typography } from '@material-ui/core';
+import { Container, Button, Typography, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 
 export default class HomePage extends React.Component {
     render() {
+        
+
         return (
             <>
             <div className="main d-flex"
@@ -17,7 +19,7 @@ export default class HomePage extends React.Component {
                 <div className="inner_main">
                     <h2>Blueshade Enteprises</h2>
                     <div>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in molestie sem, in dictum enim. Maecenas nec ante nunc. In in posuere nulla. Vestibulum et lacus et ante feugiat faucibus. 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in molestie sem, in dictum enim. Maecenas nec ante nunc. In in posuere nulla. Vestibulum et lacus <br></br> et ante feugiat faucibus. 
                         Donec vitae nunc placerat, semper ligula quis, laoreet ex.
                     </div>
 
@@ -34,7 +36,19 @@ export default class HomePage extends React.Component {
             </div>
 
             <Container maxWidth="lg">
-                <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '50vh' }} />
+                <div className="search-section">
+                    <form noValidate autoComplete="off">
+                        <TextField id="standard-basic" label="Search" fullWidth/>
+
+                        <Button variant="text" size="large" >
+                            Search
+                        </Button>
+                    </form>
+                </div>
+
+                <div className="">
+                    <h5>Home Coming </h5>
+                </div>
             </Container>
         </>
         )
