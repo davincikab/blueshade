@@ -1,4 +1,6 @@
 import app from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDixEY5MYN8K7DzQX-hAI6QxrcOBNcoIT0",
@@ -9,7 +11,6 @@ const firebaseConfig = {
     appId: "1:554451246098:web:29e76afcfc5b40dfe58ccb",
     measurementId: "G-J2394FRC3R"
 };
-
 
 class Firebase {
     constructor() {
