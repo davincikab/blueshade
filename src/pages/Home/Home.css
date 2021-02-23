@@ -1,0 +1,30 @@
+.main {
+    height: 80vh;
+    /* background-image: url('images/tierra-mallorca-rgJ1J8SDEAY-unsplash.jpg'); */
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding:var(--lengthMd2);
+    color:var(--white);
+    background-color: var(--grey);
+    background-blend-mode: multiply;
+}
+
+.inner_main {
+    height: 60vh;
+}
+
+h2 {
+    font-size: var(--lengthLg3);
+    margin: var(--lengthSm2) 0;    
+}
+
+.cta-section {
+    margin: var(--lengthLg3) 0;
+}
+
+.btn {
+    background-color: var(--primary) !important;
+    color:var(--white);
+}

@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     linkText: {
       textDecoration: `none`,
       textTransform: `capitalize`,
-      color: `white`
+      color: `#565360`
     },
     linkTextMobile:{
         textDecoration: `none`,
