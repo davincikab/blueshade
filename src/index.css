@@ -4,9 +4,10 @@
   --accent:rgb(10, 166, 172);
   --grey:#ddd;
   --white:#fff;
+  --black:#222222;
 
   /*  font colors */
-  --colorText:#565360;
+  --colorText:#303033;
   --colorLabel:#908E9B;
   --colorDisabled:#E1DFE9;
 
@@ -30,9 +31,10 @@
 body {
   box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Open Sans Condensed', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

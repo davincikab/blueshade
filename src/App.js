@@ -18,7 +18,9 @@ import Navigation from './components/Navigation';
 import SideDrawer from './components/SideDrawer.js';
 
 // pages
+import PropertyPage from './pages/Property';
 import HomePage from './pages/Home';
+import LoginPage from './pages/Account/LoginPage';
 
 
 // styles
@@ -93,9 +95,18 @@ function App() {
       
       <Switch>
         {/* component or pages */}
-        <Route path={ROUTES.HOME}>
+        <Route path={ROUTES.HOME} exact={true}>
           <HomePage />
         </Route>
+
+        <Route path={ROUTES.SIGNIN} exact={true}>
+          <LoginPage />
+        </Route>
+
+        <Route path={ROUTES.PROPERTY} exact={true}>
+          <PropertyPage />
+        </Route>
+
       </Switch>
     </Router>
   );
